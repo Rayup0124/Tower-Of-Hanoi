@@ -1,0 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 90%;
+    max-width: 1200px;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.game-setup {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.game-setup select, .game-setup button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+select {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: 2px solid transparent;
+}
+
+select:hover, select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+button {
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#startGame {
+    background: linear-gradient(45deg, #2196F3, #03a9f4);
+}
+
+#resetGame {
+    background: linear-gradient(45deg, #f44336, #ff5252);
+}
+
+#showSteps {
+    background: linear-gradient(45deg, #FF9800, #ffa726);
+}
+
+#showSolution {
+    background: linear-gradient(45deg, #9C27B0, #ba68c8);
+}
+
+#moveCount, #minSteps {
+    margin: 15px 0;
+    font-size: 1.2em;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#solution {
+    margin: 20px auto;
+    padding: 15px;
+    font-size: 16px;
+    color: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    line-height: 1.6;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    opacity: 1;
+    transition: all 0.3s ease;
+    max-width: 800px;
+}
+
+#solution.hidden {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.towers-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 50px;
+    min-height: 300px;
+    padding: 20px;
+}
+
+.tower {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.pole {
+    position: absolute;
+    width: 20px;
+    height: 200px;
+    background: linear-gradient(to right, #5d4037 0%, #795548 50%, #5d4037 100%);
+    bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.base {
+    width: 180px;
+    height: 20px;
+    background: linear-gradient(to right, #5d4037 0%, #795548 50%, #5d4037 100%);
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.disk {
+    height: 30px;
+    background: linear-gradient(45deg, #1565C0, #42A5F5);
+    border-radius: 15px;
+    position: relative;
+    z-index: 2;
+    cursor: move;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 2px 0;
+}
+
+.disk:hover {
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.disk.dragging {
+    opacity: 0.8;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .towers-container {
+        gap: 40px;
+    }
+
+    .tower {
+        width: 150px;
+    }
+
+    .base {
+        width: 140px;
+    }
+
+    .disk {
+        font-size: 12px;
+    }
+
+    .game-setup button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Victory Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal.hidden .modal-content {
+    transform: translateY(-20px);
+}
+
+.modal h2 {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.modal p {
+    color: #fff;
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.modal .stats {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.modal #playAgain {
+    background: linear-gradient(45deg, #2196F3, #03a9f4);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.modal #playAgain:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}

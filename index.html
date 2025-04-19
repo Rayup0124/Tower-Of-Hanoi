@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tower of Hanoi</h1>
+        
+        <div class="game-setup">
+            <label for="diskCount">Number of Disks (3-8):</label>
+            <select id="diskCount">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+            <button id="startGame">Start Game</button>
+            <button id="resetGame">Reset</button>
+            <button id="showSteps">Show Minimum Steps</button>
+            <button id="showSolution">Show Solution</button>
+        </div>
+
+        <div id="moveCount">Moves: 0</div>
+        <div id="minSteps"></div>
+        <div id="solution"></div>
+        
+        <div class="towers-container">
+            <div class="tower" id="tower1">
+                <div class="pole"></div>
+                <div class="base"></div>
+            </div>
+            <div class="tower" id="tower2">
+                <div class="pole"></div>
+                <div class="base"></div>
+            </div>
+            <div class="tower" id="tower3">
+                <div class="pole"></div>
+                <div class="base"></div>
+            </div>
+        </div>
+
+        <!-- Victory Modal -->
+        <div id="victoryModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>🎉 Congratulations!</h2>
+                <p>You've completed the Tower of Hanoi!</p>
+                <div class="stats">
+                    <p>Your Moves: <span id="finalMoves">0</span></p>
+                    <p>Minimum Moves: <span id="minimalMoves">0</span></p>
+                </div>
+                <button id="playAgain">Play Again</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

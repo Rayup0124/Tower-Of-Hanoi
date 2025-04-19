@@ -1,39 +1,49 @@
-# Tower-Of-Hanoi
+🏰 Tower of Hanoi 🎮
 
-A web-based implementation of the classic Tower of Hanoi puzzle game. Tower of Hanoi is a famous mathematical game where players need to move a stack of disks from one rod to another following specific rules.
+A web-based implementation of the classic Tower of Hanoi puzzle game. Tower of Hanoi is a famous mathematical logic game where players move a stack of disks from one rod to another following specific rules.
 
-## Game Rules
+---
 
-- At the start of the game, all disks are stacked in ascending order (largest at the bottom) on the leftmost rod
-- Only one disk can be moved at a time
-- A larger disk cannot be placed on top of a smaller disk
-- The game supports 3-8 disks for different difficulty levels
-- The goal is to move all disks to the rightmost rod while maintaining the original order
+📜 Game Rules
 
-## Benefits of Playing
+- 🔵 At the start, all disks are stacked in ascending order (largest at the bottom) on the leftmost rod
+- 🟡 Only one disk can be moved at a time
+- 🔴 A larger disk cannot be placed on top of a smaller disk
+- 🟢 Game supports 3–8 disks for different difficulty levels
+- 🎯 Goal: Move all disks to the rightmost rod, maintaining the original order
 
-- Enhances logical thinking abilities
-- Improves strategic planning skills
-- Boosts memory and spatial awareness
-- Develops patience and concentration
-- Cultivates problem-solving capabilities
+---
 
-## Play Online
+🎯 Benefits of Playing
 
-You can experience the game directly through this link:
-[Tower of Hanoi](https://tower-of-hanoi-dw9m.onrender.com)
+- 🧠 Enhances logical thinking
+- 📊 Improves strategic planning skills
+- 🧩 Boosts memory and spatial awareness
+- 🧘‍♂ Develops patience and concentration
+- 🛠 Cultivates problem-solving abilities
 
-## Local Deployment
+---
 
-To play the game offline, follow these steps:
+🌐 Play Online
 
-1. Download the three main files:
+👉 [Play Tower of Hanoi Here](https://tower-of-hanoi-dw9m.onrender.com)  
+> ⚠ First load might take a few seconds as the server boots up.
+
+---
+
+🖥 Local Deployment
+
+Want to play offline? Follow these steps:
+
+1. 📥 Download the three main files:
    - index.html
    - style.css
    - script.js
+2. 💾 Save all files in the same folder
+3. 🌍 Open index.html in your browser and press F5 to start playing
 
-2. Save all files in the same folder
+---
 
-3. Open index.html in your browser and press F5 to start playing
+🎉 Enjoy the challenge and have fun mastering the Tower of Hanoi!
+```
 
-Enjoy the game!

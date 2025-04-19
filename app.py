@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for
+import os
 
 app = Flask(__name__,
             template_folder='.',
@@ -16,6 +17,5 @@ def not_found(e):
     return f"File not found: {e}", 404
 
 if __name__ == '__main__':
-    print("Starting Tower of Hanoi server...")
-    print("Available at: http://localhost:5000")
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

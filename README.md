@@ -27,7 +27,6 @@ A web-based implementation of the classic Tower of Hanoi puzzle game. Tower of H
 🌐 Play Online
 
 👉 [Play Tower of Hanoi Here](https://tower-of-hanoi.pages.dev/)
-> ⚠ First load might take a few seconds as the server boots up.
 
 ---
 
